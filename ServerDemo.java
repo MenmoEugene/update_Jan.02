@@ -23,6 +23,14 @@ class ServerDemo
 
 		Socket s = ss.accept();
 		System.out.println(s.getInetAddress().getHostAddress());
+
+		InputStream in = s.getInputStream();
+
+		byte[] buf = new byte[1024];
+
+		int len = in.read(buf);
+
+		System.out.println(new String(buf,0,len));
 	
 		PrintWriter out = new PrintWriter(s.getOutputStream(),true);
 
